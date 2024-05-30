@@ -17,7 +17,7 @@ typedef struct Account
     char email[50];
     char username[20];
     char password[15];
-    float balance = 0.00;
+    double balance;
 
     // pointer to next node
     struct Account *next;
