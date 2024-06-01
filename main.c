@@ -6,7 +6,6 @@
 
 int main()
 {
-    printf_s("************Welcome to Bank Management App***********************\n\n");
 
     // call the hub menu
     hub();

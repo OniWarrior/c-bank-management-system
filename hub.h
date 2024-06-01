@@ -20,6 +20,8 @@ void redirectToPage(int *selection);
 // Hub: Console landing page before user login or account creation.
 void hub()
 {
+    printf_s("************Welcome to Bank Management App***********************\n\n");
+
     // hold selection value
     int input = 0;
 
