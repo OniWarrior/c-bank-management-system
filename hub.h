@@ -9,6 +9,14 @@
 #include <stdlib.h>
 #include "linkedlist.h"
 
+// prototypes
+void createAccount();
+void accountLogin();
+void deleteAccount();
+void killApp();
+void hub();
+void redirectToPage(int *selection);
+
 // Hub: Console landing page before user login or account creation.
 void hub()
 {
