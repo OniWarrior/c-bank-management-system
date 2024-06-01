@@ -1,28 +1,30 @@
-# Define compiler
-CXX=g++
-# Define compiler flags
-CXXFLAGS=-std=c++11 -Wall -pthread
+# Define the compiler and flags
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -pedantic
 
-# Define linker flags
-LDFLAGS=-lrt -pthread
+# Define the target executable
+TARGET = bank_system
 
-# Define output program name
-TARGET=bank_management_app
+# Define the source files
+SRCS = main.c
 
-# Define target
+# Define the object files
+OBJS = $(SRCS:.c=.o)
+
+# Default target
 all: $(TARGET)
 
-# Rule for building target
-$(TARGET): main.o
-	$(CXX)  $(CXXFLAGS)  main.o  -o  $(TARGET)  $(LDFLAGS)
+# Rule to build the target executable
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
-# Rule for compiling the source file
-main.o: main.cpp
-	$(CXX) $(CXXFLAGS) -c main.cpp
+# Rule to build object files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Clean
+# Clean up build files
 clean:
-	rm -f $(TARGET) *.o
+	rm -f $(TARGET) $(OBJS)
 
 # Phony targets
 .PHONY: all clean
