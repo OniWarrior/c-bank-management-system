@@ -87,6 +87,9 @@ void createAccount()
 
     // label for first name
     printf_s("First Name: ");
+
+    // acclow input for first name
+    scanf_s("%d", newAccount->first_name);
 }
 
 // TODO--complete this function later
