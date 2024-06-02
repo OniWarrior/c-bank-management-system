@@ -120,6 +120,10 @@ void createAccount()
 
     // allow input for initial balance
     scanf_s("%f", &newAccount->balance);
+
+    // place account into db
+    newAccount->next = head;
+    head = newAccount;
 }
 
 // TODO--complete this function later
