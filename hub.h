@@ -89,12 +89,13 @@ void createAccount()
     printf_s("First Name: ");
 
     // allow input for first name
-    scanf_s("%d", newAccount->first_name);
+    scanf_s("%s", newAccount->first_name);
 
     // label for last name
     printf_s("Last Name: ");
 
     // allow input for last name
+    scanf_s("%s", newAccount->last_name);
 }
 
 // TODO--complete this function later
