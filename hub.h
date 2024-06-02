@@ -79,6 +79,9 @@ void createAccount()
     // clear the screen
     system("cls");
 
+    // title for page
+    printf_s("**********Create Account****************\n\n");
+
     // create an account struct
     Account *newAccount = (Account *)malloc(sizeof(Account));
 }
