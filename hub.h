@@ -58,6 +58,7 @@ void redirectToPage(int *selection)
         break;
     default:
         printf_s("Invalid input! Menu will now reload...");
+        system("cls");
         hub();
     }
 }
