@@ -108,6 +108,12 @@ void createAccount()
 
     // allow input for username
     scanf_s("%s", newAccount->username);
+
+    // label for password
+    printf_s("Password: ");
+
+    // allow input for password
+    scanf_s("%s", newAccount->password);
 }
 
 // TODO--complete this function later
