@@ -124,6 +124,10 @@ void createAccount()
     // place account into db
     newAccount->next = head;
     head = newAccount;
+
+    printf_s("Account created successfully!\n");
+    printf_s("Press enter to redirect back to home...");
+    getchar();
 }
 
 // TODO--complete this function later
