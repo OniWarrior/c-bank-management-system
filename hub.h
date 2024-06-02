@@ -71,9 +71,16 @@ void killApp()
     getchar();
 }
 
-// TODO--complete this function later
+// createAccount: allows user to create an
+// account then the account is placed in the db
+// account db
 void createAccount()
 {
+    // clear the screen
+    system("cls");
+
+    // create an account struct
+    Account *newAccount = (Account *)malloc(sizeof(Account));
 }
 
 // TODO--complete this function later
