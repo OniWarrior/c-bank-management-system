@@ -114,6 +114,12 @@ void createAccount()
 
     // allow input for password
     scanf_s("%s", newAccount->password);
+
+    // label for initial balance
+    printf_s("Initial Balance: ");
+
+    // allow input for initial balance
+    scanf_s("%f", &newAccount->balance);
 }
 
 // TODO--complete this function later
