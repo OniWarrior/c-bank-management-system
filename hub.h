@@ -96,6 +96,11 @@ void createAccount()
 
     // allow input for last name
     scanf_s("%s", newAccount->last_name);
+
+    // label for email
+    printf_s("Email: ");
+
+    // Allow input for email
 }
 
 // TODO--complete this function later
