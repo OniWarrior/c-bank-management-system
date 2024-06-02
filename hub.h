@@ -101,6 +101,7 @@ void createAccount()
     printf_s("Email: ");
 
     // Allow input for email
+    scanf_s("%s", newAccount->email);
 }
 
 // TODO--complete this function later
