@@ -84,6 +84,9 @@ void createAccount()
 
     // create an account struct
     Account *newAccount = (Account *)malloc(sizeof(Account));
+
+    // label for first name
+    printf_s("First Name: ");
 }
 
 // TODO--complete this function later
