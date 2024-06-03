@@ -14,29 +14,9 @@ void createAccount();
 void accountLogin();
 void deleteAccount();
 void killApp();
-void hub();
+void hub(Account *head);
 void redirectToPage(int *selection);
-
-// Hub: Console landing page before user login or account creation.
-void hub()
-{
-    printf_s("************Welcome to Bank Management App***********************\n\n");
-
-    // hold selection value
-    int input = 0;
-
-    // menu selection screen
-    printf_s("1. Create New Account\n");
-    printf_s("2. Login To Account\n");
-    printf_s("3. Delete Account\n");
-    printf_s("4. Quit App\n");
-
-    // get user input
-    scanf_s("%d", input);
-
-    // decide where to redirect to based on input
-    redirectToPage(&input);
-}
+void clearScreen();
 
 // redirectToPage: Decides what page to redirect to based
 // on user input.
@@ -45,7 +25,7 @@ void redirectToPage(int *selection)
     switch (*selection)
     {
     case 1:
-        createAccount();
+        createAccount(head);
         break;
     case 2:
         accountLogin();
@@ -57,77 +37,153 @@ void redirectToPage(int *selection)
         killApp();
         break;
     default:
-        printf_s("Invalid input! Menu will now reload...");
-        system("cls");
+        printf("Invalid input! Menu will now reload...\n");
+        clearScreen();
         hub();
     }
 }
-
 // killApp: puts a goodbye message and quits app
 void killApp()
 {
-    printf_s("Thank you for using the app!\n");
-    printf_s("App will now end! Goodbye\n");
+    printf("Thank you for using the app!\n");
+    printf("App will now end! Goodbye\n");
     getchar();
 }
 
-// createAccount: allows user to create an
-// account then the account is placed in the db
-// account db
+// TODO--complete this function later
 void createAccount()
 {
-    // clear the screen
-    system("cls");
-
+    clearScreen();
     // title for page
-    printf_s("**********Create Account****************\n\n");
+    printf("**********Create Account****************\n\n");
 
     // create an account struct
     Account *newAccount = (Account *)malloc(sizeof(Account));
 
     // label for first name
-    printf_s("First Name: ");
+    printf("First Name: ");
 
     // allow input for first name
-    scanf_s("%s", newAccount->first_name);
+    if (scanf("%s", newAccount->first_name) != 1)
+    {
+        printf("Invalid input! Menu will now reload...\n");
+        // clear input buffer
+        while (getchar() != '\n')
+            ;
+        clearScreen();
+        hub();
+    }
+    else
+    {
+        // clear input buffer
+        while (getchar() != '\n')
+            ;
+    }
 
     // label for last name
-    printf_s("Last Name: ");
+    printf("Last Name: ");
 
     // allow input for last name
-    scanf_s("%s", newAccount->last_name);
+    if (scanf("%s", newAccount->last_name) != 1)
+    {
+        printf("Invalid input! Menu will now reload...\n");
+        // clear input buffer
+        while (getchar() != '\n')
+            ;
+        clearScreen();
+        hub();
+    }
+    else
+    {
+        while (getchar() != '\n')
+            ;
+    }
 
     // label for email
-    printf_s("Email: ");
+    printf("Email: ");
 
     // Allow input for email
-    scanf_s("%s", newAccount->email);
+    if (scanf("%s", newAccount->email) != 1)
+    {
+        printf("Invalid input! Menu will now reload...\n");
+        // clear input buffer
+        while (getchar() != '\n')
+            ;
+        clearScreen();
+        hub();
+    }
+    else
+    {
+        while (getchar() != '\n')
+            ;
+    }
 
     // label for username
-    printf_s("Username: ");
+    printf("Username: ");
 
     // allow input for username
-    scanf_s("%s", newAccount->username);
+    if (scanf("%s", newAccount->username) != 1)
+    {
+        printf("Invalid input! Menu will now reload...\n");
+        // clear input buffer
+        while (getchar() != '\n')
+            ;
+        clearScreen();
+        hub();
+    }
+    else
+    {
+        while (getchar() != '\n')
+            ;
+    }
 
     // label for password
-    printf_s("Password: ");
+    printf("Password: ");
 
     // allow input for password
-    scanf_s("%s", newAccount->password);
+    if (scanf("%s", newAccount->password) != 1)
+    {
+        printf("Invalid input! Menu will now reload...\n");
+        // clear input buffer
+        while (getchar() != '\n')
+            ;
+        clearScreen();
+        hub(head);
+    }
+    else
+    {
+        while (getchar() != '\n')
+            ;
+    }
 
     // label for initial balance
-    printf_s("Initial Balance: ");
+    printf("Initial Balance: ");
 
     // allow input for initial balance
-    scanf_s("%f", &newAccount->balance);
+    if (scanf("%lf", &newAccount->balance) != 1)
+    {
+        printf("Invalid input! Menu will now reload...\n");
+        // clear input buffer
+        while (getchar() != '\n')
+            ;
+        clearScreen();
+        hub();
+    }
+    else
+    {
+        while (getchar() != '\n')
+            ;
+    }
 
     // place account into db
     newAccount->next = head;
     head = newAccount;
 
-    printf_s("Account created successfully!\n");
-    printf_s("Press enter to redirect back to home...");
+    printf("Account created successfully!\n");
+    printf("Press enter to redirect back to home...");
     getchar();
+    clearScreen();
+    hub();
 }
 
 // TODO--complete this function later
@@ -138,6 +194,46 @@ void accountLogin()
 // TODO--complete this function later
 void deleteAccount()
 {
+}
+
+// Hub: Console landing page before user login or account creation.
+void hub()
+{
+
+    printf("****************Welcome to Bank Management App****************\n");
+
+    // hold selection value
+    int input = 0;
+
+    // menu selection screen
+    printf("1. Create New Account\n");
+    printf("2. Login To Account\n");
+    printf("3. Delete Account\n");
+    printf("4. Quit App\n");
+
+    // get user input
+    if (scanf("%d", &input) != 1)
+    {
+        printf("Invalid input! Menu will now reload...\n");
+        // clear input buffer
+        while (getchar() != '\n')
+            ;
+        // re-run hub
+        hub();
+    }
+
+    // decide where to redirect to based on input
+    redirectToPage(&input);
+}
+
+// clearScreen: this function clears the screen.
+void clearScreen()
+{
+    int clear = system("cls");
+    if (clear == -1)
+    {
+        printf("Error: Unable to clear screen");
+    }
 }
 
 #endif
