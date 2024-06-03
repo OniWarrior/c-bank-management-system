@@ -14,7 +14,7 @@ void createAccount();
 void accountLogin();
 void deleteAccount();
 void killApp();
-void hub(Account *head);
+void hub();
 void redirectToPage(int *selection);
 void clearScreen();
 
