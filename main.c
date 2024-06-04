@@ -4,6 +4,9 @@
 // desc  : entry point for bank management app
 #include "hub.h"
 
+// initialize the linked list account db with a head.
+static Account *head = NULL;
+
 int main()
 {
 
